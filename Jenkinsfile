@@ -2,7 +2,9 @@ pipeline{
     agent {
         label 'worker2'
     }
-    tools{ nodejs 'nodejs' }
+    tools{
+        nodejs 'nodejs'
+    }
     stages{
         stage("Install Project"){
             steps{
