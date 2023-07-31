@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label 'worker2'
+        label 'Built-In Node'
     }
     tools{
         nodejs 'nodejs'
