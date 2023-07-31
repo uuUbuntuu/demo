@@ -24,7 +24,7 @@ pipeline{
         stage("Deploy Service"){
             steps{
                 sh 'docker rm -f react-cont'
-                sh 'docker run -d -p 8080:80 react-img react-cont'
+                sh 'docker run -d -p 3003:80 react-img react-cont'
             }
         }
     }
