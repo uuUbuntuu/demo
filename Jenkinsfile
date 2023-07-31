@@ -3,7 +3,7 @@ pipeline{
         label 'worker2'
     }
     tools{
-        nodejs-v16.18.1
+        nodejs 'node-16.18.1'
     }
     stages{
         stage("Build Project"){
