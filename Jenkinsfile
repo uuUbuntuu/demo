@@ -4,6 +4,7 @@ pipeline{
         nodejs 'nodejs'
     }
     stages{
+        /*
         stage("Install Project"){
             steps{
                 sh 'npm install --force'
@@ -14,6 +15,7 @@ pipeline{
                 sh 'npm run build'
             }
         }
+        */
         stage("Build Image"){
             steps{
                 sh 'docker build -t react-img .'
