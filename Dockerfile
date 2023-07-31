@@ -2,8 +2,8 @@
 FROM node:16.18.1 as build
 WORKDIR /app
 COPY ./ ./
-RUN npm install --force
-RUN npm run build
+#RUN npm install --force
+#RUN npm run build
 
 # Deploy no NGINX
 FROM nginx:1.23.2
