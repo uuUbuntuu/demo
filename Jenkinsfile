@@ -1,10 +1,5 @@
 pipeline{
-    agent{
-        label 'worker1'
-    }
-    tools{
-        nodejs 'nodejs'
-    }
+    agent any
     stages{
         /*
         stage("Install Project"){
