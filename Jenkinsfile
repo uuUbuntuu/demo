@@ -15,13 +15,13 @@ pipeline{
         */
         stage("Build Image"){
             steps{
-                sh 'sudo docker build -t react-img .'
+                sh 'docker build -t react-img .'
             }
         }
         stage("Deploy Service"){
             steps{
-                sh 'sudo docker rm -f react-cont'
-                sh 'sudo docker run -d -p 3030:80 --name react-cont react-img'
+                sh 'docker rm -f react-cont'
+                sh 'docker run -d -p 3030:80 --name react-cont react-img'
             }
         }
     }
