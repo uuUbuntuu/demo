@@ -38,3 +38,23 @@ pipeline{
         }
     }
 }
+post {
+        always {
+            script {
+                def botToken = '6403891540:AAHHqVRX5m8RWfOnBBPi90E69up4QPQrA94'
+                def chatId = '-915617724'
+                def jobStatus = currentBuild.currentResult == 'SUCCESS' ? 'successful' : 'failed'
+                def jobId = env.BUILD_TAG
+                def duration = currentBuild.durationString
+                def buildNumber = currentBuild.number
+                def message = "Job ${env.JOB_NAME} (${jobId})\nStatus: ${jobStatus}\nDuration: ${duration}\nBuild Number: ${buildNumber}"
+
+                // Send Telegram notification
+                sendTelegramMessage(botToken, chatId, message)
+            }
+        }
+    }
+}
+def sendTelegramMessage(botToken, chatId, message) {
+    sh "curl -X POST -H 'Content-Type: application/json' -d '{\"chat_id\":\"${chatId}\", \"text\":\"${message}\", \"parse_mode\":\"Markdown\"}' https://api.telegram.org/bot${botToken}/sendMessage"
+}
