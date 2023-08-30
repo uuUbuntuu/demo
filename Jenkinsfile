@@ -24,7 +24,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                     sh 'docker login -u ${USERNAME} -p ${PASSWORD} 34.142.197.25:5000'
-                    sh 'docker tag react-img/react-img:${BUILD_NUMBER}'
+                    sh 'docker tag react-img react/react-img:${BUILD_NUMBER}'
                     sh 'docker push 34.142.197.25:5000/react-img:${BUILD_NUMBER}'
                     sh 'docker logout'
                 }
