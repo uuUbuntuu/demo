@@ -37,8 +37,7 @@ pipeline{
             }
         }
     }
-}
-post {
+    post {
         always {
             script {
                 def botToken = '6403891540:AAHHqVRX5m8RWfOnBBPi90E69up4QPQrA94'
