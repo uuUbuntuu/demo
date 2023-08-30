@@ -20,6 +20,12 @@ pipeline{
                 sh 'docker build -t react-img .'
             }
         }
+        stage("Deploy Service"){
+            steps{
+                sh 'docker rm -f react-cont'
+                sh 'docker run -d -p 3030:80 --name react-cont react-imgs'
+            }
+        }
         stage("Push Image"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
@@ -28,12 +34,6 @@ pipeline{
                     sh 'docker push 34.142.197.25:5000/react-img:${BUILD_NUMBER}'
                     sh 'docker logout'
                 }
-            }
-        }
-        stage("Deploy Service"){
-            steps{
-                sh 'docker rm -f react-cont'
-                sh 'docker run -d -p 3030:80 --name react-cont react-imgs'
             }
         }
     }
